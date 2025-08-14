@@ -66,10 +66,10 @@ const Projects = () => {
                                     onError={(e) => {
                                         const target = e.target;
                                         const fallbackImages = [
-                                            'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
-                                            'https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
-                                            'https://images.pexels.com/photos/177598/pexels-photo-177598.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
-                                            'https://images.pexels.com/photos/276452/pexels-photo-276452.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
+                                            '',
+                                            '',
+                                            '',
+                                            ''
                                         ];
                                         target.src = fallbackImages[project.id - 1] || fallbackImages[0];
                                     }}
