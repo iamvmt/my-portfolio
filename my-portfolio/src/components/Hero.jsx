@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronDown, Mail } from 'lucide-react';
+import { ChevronDown, Mail, Download } from 'lucide-react'; // Add Download icon
 
 const Hero = () => {
     const scrollToContact = () => {
@@ -48,19 +48,28 @@ const Hero = () => {
                         with elegant solutions.
                     </p>
 
-                    {/* CTA Button */}
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+                    {/* CTA Buttons */}
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
                         <button
                             onClick={scrollToContact}
-                            className="btn-primary flex items-center gap-2"
+                            className="btn-primary flex items-center gap-2 px-6 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition"
                         >
                             <Mail className="w-5 h-5" />
                             Hire Me
                         </button>
-                        
+                        <a
+                            href="/Resume Template DevVMT.pdf"
+                            download
+                            className="flex items-center gap-2 px-6 py-3 rounded-lg bg-white border border-blue-600 text-blue-700 font-semibold shadow hover:bg-blue-50 transition"
+                        >
+                            <Download className="w-5 h-5" />
+                            Download My Resume
+                        </a>
+                    </div>
+                    <div className="flex justify-center mb-16">
                         <a
                             href="#projects"
-                            className="text-slate-600 hover:text-blue-600 transition-colors duration-300 flex items-center gap-2 font-medium"
+                            className="text-slate-600 hover:text-blue-600 transition-colors duration-300 flex items-center gap-2 font-medium text-lg"
                         >
                             View My Work
                             <ChevronDown className="w-4 h-4" />
