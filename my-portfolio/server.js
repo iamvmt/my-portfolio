@@ -99,7 +99,7 @@ app.post('/api/contact', async (req, res) => {
 
     // Confirmation email to the sender
     const senderMailOptions = {
-      from: `"Your Name" <${process.env.EMAIL_USER}>`,
+      from: `"Vivek Mani Tripathy" <${process.env.EMAIL_USER}>`,
       to: email,
       subject: 'Thank you for contacting me!',
       html: `
