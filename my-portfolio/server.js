@@ -7,12 +7,12 @@ import { fileURLToPath } from 'url';
 
 dotenv.config();
 
-const app = express();
-const PORT = process.env.PORT || 5000;
-
-// For ES modules, __dirname workaround
+// __dirname fix for ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+const app = express();
+const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
@@ -22,6 +22,11 @@ app.use(cors({
   credentials: true
 }));
 app.use(express.json());
+
+// Serve static frontend files in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'dist')));
+}
 
 // Create reusable transporter object using SMTP transport
 const createTransporter = () => {
@@ -180,14 +185,6 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// --- Serve React frontend ---
-app.use(express.static(path.join(__dirname, 'dist')));
-
-// SPA fallback for React Router
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-});
-
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
@@ -197,13 +194,20 @@ app.use((err, req, res, next) => {
   });
 });
 
-// 404 handler for unknown routes
-app.use((req, res) => {
+// 404 handler for unknown routes (API only)
+app.use('/api/*', (req, res) => {
   res.status(404).json({
     success: false,
     message: `Cannot find ${req.originalUrl} on this server`
   });
 });
+
+// React catch-all (must be last)
+if (process.env.NODE_ENV === 'production') {
+  app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  });
+}
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
