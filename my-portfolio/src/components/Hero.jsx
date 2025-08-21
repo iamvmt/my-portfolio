@@ -1,5 +1,6 @@
 import React from 'react';
 import { ChevronDown, Mail, Download } from 'lucide-react'; // Add Download icon
+import profile from '../assets/profile.jpg'; // Adjust the path as necessary
 
 const Hero = () => {
     const scrollToContact = () => {
