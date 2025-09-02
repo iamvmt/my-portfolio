@@ -59,7 +59,7 @@ const Hero = () => {
                             Hire Me
                         </button>
                         <a
-                            href="/Resume Template DevVMT.pdf"
+                            href="/Correct updated Latest Resume of VMT-1.pdf"
                             download
                             className="flex items-center gap-2 px-6 py-3 rounded-lg bg-white border border-blue-600 text-blue-700 font-semibold shadow hover:bg-blue-50 transition"
                         >
